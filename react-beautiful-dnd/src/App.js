@@ -2,36 +2,35 @@ import React, { useState } from 'react';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import './App.css';
 
-const finalSpaceCharacters = [
-  {
-    id: 'gary',
-    name: 'Gary Goodspeed',
-    thumb: '/images/gary.png'
-  },
-  {
-    id: 'cato',
-    name: 'Little Cato',
-    thumb: '/images/cato.png'
-  },
-  {
-    id: 'kvn',
-    name: 'KVN',
-    thumb: '/images/kvn.png'
-  },
-  {
-    id: 'mooncake',
-    name: 'Mooncake',
-    thumb: '/images/mooncake.png'
-  },
-  {
-    id: 'quinn',
-    name: 'Quinn Ergon',
-    thumb: '/images/quinn.png'
-  }
-]
 
 function App() {
-  const [characters, updateCharacters] = useState(finalSpaceCharacters);
+  const [characters, updateCharacters] = useState([
+    {
+      id: "gary",
+      name: 'Gary Goodspeed',
+      thumb: '/images/gary.png'
+    },
+    {
+      id: "cato",
+      name: 'Little Cato',
+      thumb: '/images/cato.png'
+    },
+    {
+      id: "kvn",
+      name: 'KVN',
+      thumb: '/images/kvn.png'
+    },
+    {
+      id: "mooncake",
+      name: 'Mooncake',
+      thumb: '/images/mooncake.png'
+    },
+    {
+      id: "quinn",
+      name: 'Quinn Ergon',
+      thumb: '/images/quinn.png'
+    }
+  ]);
 
   function handleOnDragEnd(result) {
     if (!result.destination) return;
@@ -52,6 +51,7 @@ function App() {
             {(provided) => (
               <ul className="characters" {...provided.droppableProps} ref={provided.innerRef}>
                 {characters.map(({id, name, thumb}, index) => {
+                  console.log("Debugging ID:", id);
                   return (
                     <Draggable key={id} draggableId={id} index={index}>
                       {(provided) => (
